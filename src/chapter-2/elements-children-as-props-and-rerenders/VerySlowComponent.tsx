@@ -5,6 +5,7 @@ function VerySlowComponent() {
   
   useEffect(() => {
     const interval = setInterval(() => setCount(c => c + 1), 100);
+    console.log('rerenders');
     return () => clearInterval(interval);
   }, []);
 

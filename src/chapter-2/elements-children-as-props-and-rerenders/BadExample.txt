@@ -1,0 +1,35 @@
+import VerySlowComponent from './VerySlowComponent'
+import BunchOfStuff from './BunchOfStuff'
+import OtherStuffAlsoComplicated from './OtherStuffAlsoComplicated'
+import './Main.css';
+import { useState } from 'react';
+
+const MovingBlock = ({ position }: { position: number }) => (
+  <div className="movable-block" style={{ top: position }}>
+    {position}
+  </div>
+);
+
+function Main() {
+
+  const [position , setPosition] = useState(0);
+
+  const onScroll = (e : React.UIEvent<HTMLDivElement>) => {
+    setPosition(e.currentTarget.scrollTop);
+  }
+
+  return (
+    <div className='scrolable-block' onScroll={onScroll}>
+        <MovingBlock position={position} />
+        <VerySlowComponent />
+        <BunchOfStuff />
+        <OtherStuffAlsoComplicated />
+    </div>
+  )
+}
+
+
+export default Main
+
+
+

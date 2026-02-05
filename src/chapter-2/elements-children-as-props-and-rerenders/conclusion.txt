@@ -1,0 +1,6 @@
+I believe the main difference between 
+the bad example and the good one is the state isolation
+
+instead of putting the state change on main we created 
+another component that handle the scroll state change
+which in turn stop the children from rerendering
