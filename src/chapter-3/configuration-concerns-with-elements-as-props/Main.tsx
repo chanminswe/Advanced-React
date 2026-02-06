@@ -1,33 +1,70 @@
-import React from 'react'
-import ErrorIcon from '@mui/icons-material/Error';
-import WarningIcon from '@mui/icons-material/Warning';
-import type { ReactElement } from "react";
+import {useState, type ReactNode } from "react";
 
+type ModalDialogProps = {
+    content : ReactNode;
+    footer : ReactNode;
+    onClose : () => void;
+}
 
+type ButtonProps = {
+    text : string ;
+    onClick : () => void;
+}
 
-type IconProps = {
-  color: string;
-  size?: 'large' | 'medium' | 'small';
-};
+const SomeFormHere = () => <div> some form here</div>;
+const SubmitButton = () => <button className="button">Submit button</button>;
+const CancelButton = () => <button className="button secondary">Cancel button</button>;
 
-function Button({icon} : { icon : ReactElement }) {
+function Button({ text , onClick } : ButtonProps) {
   return (
-     <button className="button">Submit {icon}</button>
+     <button 
+     onClick={onClick}
+     className="button">{text}</button>
   )
 }
 
-
-const Error = ({ color, size }: IconProps) => <ErrorIcon style={{ color }} fontSize={size} />;
-const Warning = ({ color, size }: IconProps) => <WarningIcon style={{ color }} fontSize={size} />;
-const Avatar = () => <span className="avatar">AB</span>;
+const ModalDialog = ({ content , footer , onClose } : ModalDialogProps) => {
+    return(
+        <div>
+            <div>
+                {content}
+                <Button 
+                onClick={onClose}
+                text="Close Dialogue"/>
+            </div>
+            <div>{footer}</div>
+        </div>
+    )
+}
 
 function Main() {
+    const [isOpen1 , setIsOpen1] = useState(false);
+    const [isOpen2 , setIsOpen2] = useState(false);
+
   return (
-    <div>
-        <Button icon={<Error color='red' /> }/>
-        <Button icon={<Warning color='yellow' size='large'/>} />
-        <Button icon={<Avatar />} />
-    </div>
+    <>
+        <h4>Dialog with content and one button in the footer</h4>
+        <Button 
+        onClick={() => setIsOpen1(true)} 
+        text="Open Dialog One"
+        />
+        {isOpen1 && 
+        <ModalDialog 
+        content={<SomeFormHere />}
+        footer={<SubmitButton />}
+        onClose={() => setIsOpen1(false)}
+        />}
+        <Button
+        onClick={() => setIsOpen2(true)}
+        text="Open Dialog Two"
+        />
+        {isOpen2 && 
+        <ModalDialog 
+        content={<CancelButton />}
+        onClose={() => setIsOpen2(false)}
+        footer={<CancelButton />}
+        />}
+    </>
   )
 }
 
