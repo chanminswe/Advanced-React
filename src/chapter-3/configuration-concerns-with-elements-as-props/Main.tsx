@@ -68,4 +68,6 @@ function Main() {
   )
 }
 
+// we can write this better by using {children} instead of content for better view
+//for example <ModalDialog><SomeFormHere /></ModalDialog>
 export default Main

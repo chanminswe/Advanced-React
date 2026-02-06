@@ -1,3 +1,5 @@
+example 1
+
 so what the author is implying is , 
 we instead of making the perfect reusable component that is complicated 
 with so many optional props and conditions in the Button component 
@@ -8,3 +10,5 @@ of cause it doesn't apply for every reusable component or if your designer
 have strict button styling for each buttons.
 
 I think this still will helps me.
+
+example 2
