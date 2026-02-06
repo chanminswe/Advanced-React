@@ -1,0 +1,10 @@
+so what the author is implying is , 
+we instead of making the perfect reusable component that is complicated 
+with so many optional props and conditions in the Button component 
+we can just make the Button component more flexible to implement easier 
+minor changes logic such as Color or Icon changes.
+
+of cause it doesn't apply for every reusable component or if your designer
+have strict button styling for each buttons.
+
+I think this still will helps me.
