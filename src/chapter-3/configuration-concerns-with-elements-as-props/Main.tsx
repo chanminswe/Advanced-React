@@ -1,73 +1,47 @@
-import {useState, type ReactNode } from "react";
+import React from 'react';
+import type { ReactElement } from 'react';
+import LoadingIcon from '@mui/icons-material/HourglassEmpty';
 
-type ModalDialogProps = {
-    content : ReactNode;
-    footer : ReactNode;
-    onClose : () => void;
-}
+type IconProps = {
+  color?: string;
+  size?: 'large' | 'medium' | 'small';
+};
+const Loading = ({ color, size }: IconProps) => <LoadingIcon style={{ color }} fontSize={size} />;
 
 type ButtonProps = {
-    text : string ;
-    onClick : () => void;
-}
+  icon: ReactElement;
+  size?: 'large' | 'normal';
+  appearance?: 'primary' | 'secondary';
+};
+const Button = ({ icon, size = 'normal', appearance = 'primary' }: ButtonProps) => {
+  const defaultIconProps = {
+    size: size === 'large' ? 'large' : 'medium',
+    color: appearance === 'primary' ? 'white' : 'black',
+  };
+  const newProps = {
+    ...defaultIconProps,
+    ...(typeof icon.props === 'object' ? icon.props : {}),
+  };
 
-const SomeFormHere = () => <div> some form here</div>;
-const SubmitButton = () => <button className="button">Submit button</button>;
-const CancelButton = () => <button className="button secondary">Cancel button</button>;
+  const clonedIcon = React.cloneElement(icon, newProps);
 
-function Button({ text , onClick } : ButtonProps) {
-  return (
-     <button 
-     onClick={onClick}
-     className="button">{text}</button>
-  )
-}
+  return <button className={`button ${appearance}`}>Submit {clonedIcon}</button>;
+};
 
-const ModalDialog = ({ content , footer , onClose } : ModalDialogProps) => {
-    return(
-        <div>
-            <div>
-                {content}
-                <Button 
-                onClick={onClose}
-                text="Close Dialogue"/>
-            </div>
-            <div>{footer}</div>
-        </div>
-    )
-}
-
-function Main() {
-    const [isOpen1 , setIsOpen1] = useState(false);
-    const [isOpen2 , setIsOpen2] = useState(false);
-
+export default function App() {
   return (
     <>
-        <h4>Dialog with content and one button in the footer</h4>
-        <Button 
-        onClick={() => setIsOpen1(true)} 
-        text="Open Dialog One"
-        />
-        {isOpen1 && 
-        <ModalDialog 
-        content={<SomeFormHere />}
-        footer={<SubmitButton />}
-        onClose={() => setIsOpen1(false)}
-        />}
-        <Button
-        onClick={() => setIsOpen2(true)}
-        text="Open Dialog Two"
-        />
-        {isOpen2 && 
-        <ModalDialog 
-        content={<CancelButton />}
-        onClose={() => setIsOpen2(false)}
-        footer={<CancelButton />}
-        />}
-    </>
-  )
-}
+      <h4>primary button will have white icons</h4>
+      <Button appearance="primary" icon={<Loading />} />
 
-// we can write this better by using {children} instead of content for better view
-//for example <ModalDialog><SomeFormHere /></ModalDialog>
-export default Main
+      <h4>secondary button will have black icons</h4>
+      <Button appearance="secondary" icon={<Loading />} />
+
+      <h4>large button will have large icons</h4>
+      <Button size="large" icon={<Loading />} />
+
+      <h4>override default icons</h4>
+      <Button size="large" icon={<Loading color="red" />} />
+    </>
+  );
+}

@@ -11,4 +11,10 @@ have strict button styling for each buttons.
 
 I think this still will helps me.
 
-example 2
+Main.tsx
+
+its a useful knowledge to pick up on but the book conclued that its better for 
+simple components not complicated ones.
+
+I think I wouldn't use this alot maybe just me.
+
