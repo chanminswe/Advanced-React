@@ -1,0 +1,6 @@
+const Component = () => {
+const onClick = useCallback(() => {
+    console.log("Something)
+}, []);
+return <button onClick={onClick}>click me</button>;
+};

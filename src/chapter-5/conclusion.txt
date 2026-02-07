@@ -1,0 +1,16 @@
+Example - 1
+ On the first example the memorization or callback works because useEffect dependency
+ and the created instance is considered the same since its memorized! 
+ so useMemo and useCallback actually did something.
+
+Example - 2
+ On the second example useCallback did nothing because like we all know about 
+ react. When the parent component rerenders every child rerenders doesn't matter
+ if we use useCallback or useMemo it would just end up being the anti pattern!
+
+ And that's when React.memo come in handy because it memorizes the component 
+ itself. If this component is wrapped in React.memo, then and only then will React stop and check its
+ props.
+
+ If none of the props change, then the component will not be re-
+ rendered.

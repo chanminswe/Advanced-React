@@ -1,5 +1,5 @@
 import './App.css';
-import Main from './chapter-3/configuration-concerns-with-elements-as-props/Main';
+import Main from './chapter-5/memorization/Main';
 
 function App() {
 
