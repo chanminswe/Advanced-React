@@ -12,5 +12,9 @@ Example - 2
  itself. If this component is wrapped in React.memo, then and only then will React stop and check its
  props.
 
- If none of the props change, then the component will not be re-
- rendered.
+ If none of the props change, then the component will not be re-rendered.
+
+ Example - 3 
+ This is the perfect example of the above statement the one that was memorized 
+ EG : ChildMemo doesn't cause rerender but the default one cause rerender!
+ 

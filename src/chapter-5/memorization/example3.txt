@@ -18,10 +18,7 @@ const Child = ({ onChange }: { onChange: () => void }) => {
   useEffect(() => {
     console.info('Child re-renders !');
   });
-
-  onChange()
-
-  return <div>Some Child</div>;
+  return <div onChange={onChange}>Some Child</div>;
 };
 
 const ChildMemo = React.memo(Child);
