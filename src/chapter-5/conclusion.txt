@@ -17,4 +17,9 @@ Example - 2
  Example - 3 
  This is the perfect example of the above statement the one that was memorized 
  EG : ChildMemo doesn't cause rerender but the default one cause rerender!
+
+ Example - 4 
+ We can use the memorized parent component but if the child uses is not memorized
+ the memorization won't take proper affects.
+ 
  

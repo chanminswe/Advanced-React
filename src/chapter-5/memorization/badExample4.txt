@@ -1,4 +1,4 @@
-import React , {useEffect, useMemo} from 'react'
+import React , {useEffect} from 'react'
 import type { ReactNode } from 'react';
 
 type ChildProps = {
@@ -15,18 +15,13 @@ const Child = ({ children }: ChildProps) => {
 const ChildMemo = React.memo(Child);
 
 const Component = () => {
-
-    const content = useMemo(
-        () => <div>Some Text Here </div>,
-        []
-    )
-
     return(
         <ChildMemo>
-            {content}
+            <div>Some text here </div>
         </ChildMemo>
     )
 }
+
 
 function Main() {
   return (
