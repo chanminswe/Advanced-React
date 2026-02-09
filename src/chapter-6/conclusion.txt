@@ -1,0 +1,7 @@
+ mysterious-bug 
+  
+  the first conditional form works well because once the condition changed
+  the input is unmouted and the text is shown 
+
+  but when both conditional uses input react has this bug of rerendering the 
+  first one with the new data from the second one!
