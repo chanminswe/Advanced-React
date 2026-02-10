@@ -5,3 +5,9 @@
 
   but when both conditional uses input react has this bug of rerendering the 
   first one with the new data from the second one!
+
+example-1
+ the key take away is that react memorized with input is which 
+ through key so the input state for them stays the same while the 
+ one without key go through the bug of not knowing which input's 
+ value is which
